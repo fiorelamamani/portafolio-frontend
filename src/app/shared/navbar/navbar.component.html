@@ -1,0 +1,58 @@
+<div class="fixed top-0 left-0 w-full z-50 px-4 pt-1">
+  <nav class="max-w-full mx-auto bg-slate-900/70 backdrop-blur-lg border border-slate-700/50 rounded-2xl shadow-lg shadow-black/20">
+    
+    <div class="px-6 h-16 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="text-xl font-bold text-white tracking-tighter hover:opacity-80 transition-opacity">
+        Fiorela<span class="text-teal-400">.</span>
+      </a>
+
+      <!-- Links Desktop -->
+      <div class="hidden md:flex items-center gap-1">
+        @for (item of navItems; track item.href) {
+          <a [href]="item.href" 
+             class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all">
+            {{ item.label }}
+          </a>
+        }
+      </div>
+
+      <!-- Botón Contacto Desktop -->
+      <div class="hidden md:block">
+        <a href="#contacto" class="px-5 py-2 text-sm font-semibold text-slate-950 bg-teal-400 hover:bg-teal-300 rounded-xl transition-all shadow-[0_0_15px_rgba(45,212,191,0.3)]">
+          Hablemos
+        </a>
+      </div>
+
+      <!-- Botón Hamburguesa Mobile -->
+      <button (click)="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none">
+        @if (isMobileMenuOpen()) {
+          <svg lucideIcon="x" class="w-6 h-6"></svg>
+        } @else {
+          <svg lucideIcon="menu" class="w-6 h-6"></svg>
+        }
+      </button>
+
+    </div>
+
+    @if (isMobileMenuOpen()) {
+      <div class="md:hidden border-t border-slate-700/50 px-4 py-4 bg-slate-900/95 rounded-b-2xl backdrop-blur-xl">
+        <div class="flex flex-col gap-2">
+          @for (item of navItems; track item.href) {
+            <a [href]="item.href" 
+               (click)="isMobileMenuOpen.set(false)"
+               class="block px-4 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-xl transition-colors">
+              {{ item.label }}
+            </a>
+          }
+          <a href="#contacto" 
+             (click)="isMobileMenuOpen.set(false)"
+             class="mt-2 block text-center px-4 py-3 text-base font-semibold text-slate-950 bg-teal-400 hover:bg-teal-300 rounded-xl transition-all">
+            Hablemos
+          </a>
+        </div>
+      </div>
+    }
+  </nav>
+</div>
