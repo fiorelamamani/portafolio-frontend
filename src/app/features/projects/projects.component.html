@@ -1,0 +1,30 @@
+<section id="proyectos" class="py-24 bg-slate-950 text-white relative overflow-hidden">
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:24px_24px] opacity-40">
+    </div>
+
+    <div class="absolute top-0 -right-40 w-[40rem] h-[40rem] bg-teal-500 rounded-full filter blur-[150px] opacity-30">
+    </div>
+    <div
+      class="absolute -bottom-40 -left-40 w-[40rem] h-[40rem] bg-emerald-500 rounded-full filter blur-[150px] opacity-30">
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+        Proyectos <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-500">Destacados</span>
+      </h2>
+      <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+        Una selección de los proyectos en los que he trabajado, aplicando buenas prácticas, arquitectura limpia y
+        enfocados en la experiencia de usuario.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (project of projects; track project.id) {
+      <app-project-card [project]="project"></app-project-card>
+      }
+    </div>
+  </div>
+</section>
